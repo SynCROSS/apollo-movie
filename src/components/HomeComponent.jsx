@@ -24,12 +24,10 @@ const HomeComponentBlock = styled.div`
   & > .movie_item > .movie_image {
     width: 200px;
     height: 300px;
-    ${'' /* border: 0; */}
-    ${'' /* box-shadow: 0 0 2px 2px; */}
     cursor: pointer;
     border-radius: 10px;
     background-color: #e0e0e0;
-    box-shadow: 10px 10px 30px #bebebe, -10px -10px 30px #ffffff;
+    box-shadow: 10px 10px 20px #bebebe, -10px -10px 20px #ffffff;
   }
 
   & > .movie_item > .movie_summary {
@@ -61,6 +59,7 @@ const HomeComponentBlock = styled.div`
     font-weight: 700;
     word-wrap: break-word;
     background-color: #0f202d;
+    background-color: rgba(15, 32, 45, 0.7);
     color: aliceblue;
     opacity: 0;
     overflow: auto;
