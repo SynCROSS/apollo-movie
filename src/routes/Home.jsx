@@ -2,6 +2,8 @@ import React from 'react';
 import { gql, useQuery } from '@apollo/client';
 import HomeComponent from '../components/HomeComponent';
 
+// * If the Query does not have a Variable,
+// * the 'query' can be omitted.
 const GET_MOVIES = gql`
   {
     movies {
@@ -20,7 +22,8 @@ const Home = () => {
   );
   return (
     <section className="movie_wrapper">
-      {data &&
+      {!loading &&
+        data &&
         data.movies.map(movie => (
           <HomeComponent
             key={movie.id}
