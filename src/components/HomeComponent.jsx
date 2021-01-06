@@ -3,14 +3,12 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const HomeComponentBlock = styled.div`
-  & {
-    padding: 20px 10px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 200px;
-  }
+  padding: 20px 10px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 200px;
 
   & > .movie_item {
     display: flex;
@@ -28,15 +26,6 @@ const HomeComponentBlock = styled.div`
     border-radius: 10px;
     background-color: #e0e0e0;
     box-shadow: 10px 10px 20px #bebebe, -10px -10px 20px #ffffff;
-  }
-
-  & > .movie_item > .movie_summary {
-    z-index: 2;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
   }
 
   & > .movie_title {
@@ -69,22 +58,22 @@ const HomeComponentBlock = styled.div`
   & > .movie_item > .movie_summary > .summary_wrapper > .summary {
     padding: 0 7px;
     width: 169px;
-    height: 300px;
+    height: calc(100% - 28.4px);
   }
 `;
 
-const HomeComponent = ({ id, title, summary, large_cover_image }) => {
-  const onImageError = e => {
-    e.target.onerror = null;
-    e.target.src = process.env.PUBLIC_URL + '/NoImage.png';
-  };
-  const changeOpacityToOne = e => {
-    e.currentTarget.style = 'opacity: 1';
-  };
-  const changeOpacityToZero = e => {
-    e.currentTarget.style = 'opacity: 0';
-  };
+export const onImageError = e => {
+  e.target.onerror = null;
+  e.target.src = process.env.PUBLIC_URL + '/NoImage.png';
+};
+const changeOpacityToOne = e => {
+  e.currentTarget.style = 'opacity: 1';
+};
+const changeOpacityToZero = e => {
+  e.currentTarget.style = 'opacity: 0';
+};
 
+const HomeComponent = ({ id, title, summary, large_cover_image }) => {
   return (
     <HomeComponentBlock id={id}>
       <div className="movie_item">

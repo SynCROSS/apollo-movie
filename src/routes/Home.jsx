@@ -9,7 +9,7 @@ const GET_MOVIES = gql`
     movies {
       id
       title
-      summary
+      description_full
       large_cover_image
     }
   }
@@ -21,7 +21,7 @@ const Home = () => {
     'loading status: ' + loading + '\nerror: ' + error + '\ndata: ' + data,
   );
   return (
-    <section className="movie_wrapper">
+    <section className="movies_wrapper">
       {!loading &&
         data &&
         data.movies.map(movie => (
@@ -29,7 +29,7 @@ const Home = () => {
             key={movie.id}
             id={movie.id}
             title={movie.title}
-            summary={movie.summary}
+            summary={movie.description_full}
             large_cover_image={movie.large_cover_image}
           />
         ))}
