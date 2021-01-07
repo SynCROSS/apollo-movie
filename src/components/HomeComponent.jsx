@@ -56,7 +56,7 @@ const HomeComponentBlock = styled.div`
   }
 
   & > .movie_item > .movie_summary > .summary_wrapper > .summary {
-    padding: 0 7px;
+    padding: 5px 7px;
     width: 169px;
     height: calc(100% - 28.4px);
   }

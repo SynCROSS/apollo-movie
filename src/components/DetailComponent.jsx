@@ -8,30 +8,42 @@ const DetailComponentBlock = styled.div`
   align-items: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: rgba(51, 51, 51, 0.6);
+  background-color: rgba(51, 51, 51, 0.3);
   background-blend-mode: multiply;
   padding: 10px 20px;
 
-  & > .cover_image {
-    width: 200px;
-    border-radius: 10px;
-    border: 5px solid white;
-  }
-  & > .movie_text {
+  & > .movie_info {
     font-size: 2rem;
     width: 50%;
     margin: 20px;
     word-wrap: break-word;
   }
 
-  & > .movie_text > .movie_header > .title {
-    margin: 50px auto;
+  & > .movie_info > .movie_header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
 
-  & > .movie_text > .movie_header > .under_title {
+  & > .movie_info > .movie_header > .cover_image {
+    border-radius: 10px;
+    border: 5px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+  }
+
+  & > .movie_info > .movie_header > .title {
+    margin: 20px auto;
+  }
+
+  & > .movie_info > .movie_header > .under_title {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
   }
 `;
 
@@ -47,21 +59,22 @@ const DetailComponent = ({
   return (
     <DetailComponentBlock
       style={{ backgroundImage: `url(${background_image_original})` }}>
-      <img
-        src={large_cover_image}
-        alt={title}
-        onError={onImageError}
-        className="cover_image"
-      />
-      <div className="movie_text">
+      <div className="movie_info">
         <header className="movie_header">
           <h2 className="title">{title}</h2>
+          <img
+            src={large_cover_image}
+            alt={title}
+            onError={onImageError}
+            className="cover_image"
+          />
           <div className="under_title">
             <strong className="rating">{rating}/10</strong>
             <div className="date">{date_uploaded}</div>
           </div>
-          <hr />
+          <hr style={{ margin: '10px 0', width: '100%' }} />
         </header>
+
         <p className="summary">{description_full}</p>
       </div>
     </DetailComponentBlock>
