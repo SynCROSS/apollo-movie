@@ -68,13 +68,27 @@ const changeOpacityToZero = e => {
   e.currentTarget.style = 'opacity: 0';
 };
 
-const HomeComponent = ({ id, title, summary, large_cover_image }) => {
+const HomeComponent = ({
+  id,
+  title,
+  summary,
+  large_cover_image,
+  medium_cover_image,
+}) => {
   return (
     <HomeComponentBlock id={id} className="jc-center ai-center">
       <div className="movie_item flex-center">
         {large_cover_image && (
           <img
             src={large_cover_image}
+            alt={title}
+            className="movie_image"
+            onError={onImageError}
+          />
+        )}
+        {!large_cover_image && (
+          <img
+            src={medium_cover_image}
             alt={title}
             className="movie_image"
             onError={onImageError}

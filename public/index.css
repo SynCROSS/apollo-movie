@@ -41,7 +41,5 @@ body {
 }
 .movie_wrapper {
   color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 }

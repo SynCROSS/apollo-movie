@@ -8,6 +8,7 @@ const DetailComponentBlock = styled.div`
   background-color: rgba(51, 51, 51, 0.3);
   background-blend-mode: multiply;
   padding: 10px 20px;
+  width: 97vw;
 
   & > .movie_info {
     font-size: 2rem;
@@ -34,6 +35,15 @@ const DetailComponentBlock = styled.div`
     justify-content: space-between;
     width: 100%;
   }
+
+  & > .movie_info > .movie_header > .genres {
+    color: aliceblue;
+    font-size: 1.5rem;
+  }
+
+  & > .movie_info > .movie_header > .genres > .genre {
+    list-style: none;
+  }
 `;
 
 const DetailComponent = ({
@@ -52,6 +62,13 @@ const DetailComponent = ({
       <div className="movie_info">
         <header className="movie_header flex-center">
           <h2 className="title">{title}</h2>
+          <ul className="genres flex-center">
+            {genres?.map(genre => (
+              <li className="genre" key={genre}>
+                &nbsp;{genre}&nbsp;
+              </li>
+            ))}
+          </ul>
           <img
             src={large_cover_image}
             alt={title}
@@ -64,8 +81,7 @@ const DetailComponent = ({
           </div>
           <hr style={{ margin: '10px 0', width: '100%' }} />
         </header>
-
-        <p className="summary">{description_full}</p>
+        <p className="summary">{description_full ?? 'No Summary ......'}</p>
       </div>
     </DetailComponentBlock>
   );
