@@ -16,6 +16,12 @@ const Detail = () => {
         large_cover_image
         date_uploaded
       }
+      suggestions(movie_id: $id) {
+        id
+        title
+        description_full
+        large_cover_image
+      }
     }
   `;
 
@@ -25,17 +31,17 @@ const Detail = () => {
   console.log(loading, data);
   return (
     <div className="movie_wrapper">
-      {!loading && data.movie && (
-        <DetailComponent
-          title={data.movie.title}
-          rating={data.movie.rating}
-          genres={data.movie.genres}
-          description_full={data.movie.description_full ?? 'No Summary ......'}
-          background_image_original={data.movie.background_image_original}
-          large_cover_image={data.movie.large_cover_image}
-          date_uploaded={data.movie.date_uploaded}
-        />
-      )}
+      {/* {!loading && data.movie && ( */}
+      <DetailComponent
+        title={data?.movie?.title}
+        rating={data?.movie?.rating}
+        genres={data?.movie?.genres}
+        description_full={data?.movie?.description_full ?? 'No Summary ......'}
+        background_image_original={data?.movie?.background_image_original}
+        large_cover_image={data?.movie?.large_cover_image}
+        date_uploaded={data?.movie?.date_uploaded}
+      />
+      {/* )} */}
     </div>
   );
 };

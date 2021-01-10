@@ -22,17 +22,15 @@ const Home = () => {
   );
   return (
     <section className="movies_wrapper">
-      {!loading &&
-        data &&
-        data.movies.map(movie => (
-          <HomeComponent
-            key={movie.id}
-            id={movie.id}
-            title={movie.title}
-            summary={movie.description_full}
-            large_cover_image={movie.large_cover_image}
-          />
-        ))}
+      {data?.movies?.map(movie => (
+        <HomeComponent
+          key={movie.id}
+          id={movie.id}
+          title={movie.title}
+          summary={movie.description_full}
+          large_cover_image={movie.large_cover_image}
+        />
+      ))}
     </section>
   );
 };
