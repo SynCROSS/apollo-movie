@@ -12,6 +12,8 @@ const HomeComponentBlock = styled.div`
     position: relative;
     width: 200px;
     height: 300px;
+    background-color: #e0e0e0;
+    box-shadow: 10px 10px 20px #bebebe, -10px -10px 20px #ffffff;
   }
 
   & > .movie_item > .movie_image {
@@ -19,8 +21,6 @@ const HomeComponentBlock = styled.div`
     height: 300px;
     cursor: pointer;
     border-radius: 10px;
-    background-color: #e0e0e0;
-    box-shadow: 10px 10px 20px #bebebe, -10px -10px 20px #ffffff;
   }
 
   & > .movie_title {
