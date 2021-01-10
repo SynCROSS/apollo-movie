@@ -3,11 +3,8 @@ import styled from 'styled-components';
 import { onImageError } from './HomeComponent';
 
 const DetailComponentBlock = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-repeat: no-repeat;
   background-size: cover;
+  background-repeat: no-repeat;
   background-color: rgba(51, 51, 51, 0.3);
   background-blend-mode: multiply;
   padding: 10px 20px;
@@ -20,18 +17,12 @@ const DetailComponentBlock = styled.div`
   }
 
   & > .movie_info > .movie_header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
   }
 
   & > .movie_info > .movie_header > .cover_image {
     border-radius: 10px;
     border: 5px solid white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin: 40px;
   }
 
@@ -40,9 +31,7 @@ const DetailComponentBlock = styled.div`
   }
 
   & > .movie_info > .movie_header > .under_title {
-    display: flex;
     justify-content: space-between;
-    align-items: center;
     width: 100%;
   }
 `;
@@ -58,17 +47,18 @@ const DetailComponent = ({
 }) => {
   return (
     <DetailComponentBlock
+      className="flex-center"
       style={{ backgroundImage: `url(${background_image_original})` }}>
       <div className="movie_info">
-        <header className="movie_header">
+        <header className="movie_header flex-center">
           <h2 className="title">{title}</h2>
           <img
             src={large_cover_image}
             alt={title}
             onError={onImageError}
-            className="cover_image"
+            className="cover_image flex-center"
           />
-          <div className="under_title">
+          <div className="under_title flex ai-center">
             <strong className="rating">{rating}/10</strong>
             <div className="date">{date_uploaded}</div>
           </div>

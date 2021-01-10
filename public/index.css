@@ -5,9 +5,25 @@
 
 body {
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
   align-items: flex-start;
+}
+
+.flex {
+  display: flex;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.ai-center {
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #root {

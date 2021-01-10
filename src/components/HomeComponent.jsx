@@ -5,16 +5,11 @@ import { Link } from 'react-router-dom';
 const HomeComponentBlock = styled.div`
   padding: 20px 10px;
   display: inline-flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   width: 200px;
 
   & > .movie_item {
-    display: flex;
     position: relative;
-    justify-content: center;
-    align-items: center;
     width: 200px;
     height: 300px;
   }
@@ -75,8 +70,8 @@ const changeOpacityToZero = e => {
 
 const HomeComponent = ({ id, title, summary, large_cover_image }) => {
   return (
-    <HomeComponentBlock id={id}>
-      <div className="movie_item">
+    <HomeComponentBlock id={id} className="jc-center ai-center">
+      <div className="movie_item flex-center">
         {large_cover_image && (
           <img
             src={large_cover_image}
