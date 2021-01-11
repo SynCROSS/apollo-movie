@@ -2,8 +2,7 @@ import React from 'react';
 import { gql, useQuery } from '@apollo/client';
 import HomeComponent from '../components/HomeComponent';
 
-// * If the Query does not have a Variable,
-// * the 'query' can be omitted.
+// * @client means it comes from frontend
 const GET_MOVIES = gql`
   {
     movies {
@@ -11,6 +10,7 @@ const GET_MOVIES = gql`
       title
       description_full
       large_cover_image
+      isLiked @client
     }
   }
 `;
@@ -18,7 +18,12 @@ const GET_MOVIES = gql`
 const Home = () => {
   const { loading, error, data } = useQuery(GET_MOVIES);
   console.log(
-    'loading status: ' + loading + '\nerror: ' + error + '\ndata: ' + data,
+    'Home: loading status: ' +
+      loading +
+      '\nerror: ' +
+      error +
+      '\ndata: ' +
+      data,
   );
   return (
     <section className="movies_wrapper">
@@ -29,6 +34,7 @@ const Home = () => {
           title={movie.title}
           summary={movie.description_full}
           large_cover_image={movie.large_cover_image}
+          isLiked={movie.isLiked}
         />
       ))}
     </section>

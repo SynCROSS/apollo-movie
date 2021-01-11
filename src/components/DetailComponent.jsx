@@ -76,7 +76,9 @@ const DetailComponent = ({
             className="cover_image flex-center"
           />
           <div className="under_title flex ai-center">
-            <strong className="rating">{rating && rating + '/10'}</strong>
+            <strong className="rating">
+              {rating * 1 === rating && rating + '/10'}
+            </strong>
             <div className="date">{date_uploaded}</div>
           </div>
           <hr style={{ margin: '10px 0', width: '100%' }} />

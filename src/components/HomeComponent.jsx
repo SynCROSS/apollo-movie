@@ -55,6 +55,21 @@ const HomeComponentBlock = styled.div`
     width: 169px;
     height: calc(100% - 28.4px);
   }
+  & > .like_tab {
+    margin: 5px;
+    z-index: 10;
+  }
+
+  & > .like_tab > .like {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 10%;
+    padding: 3px 7px;
+    background-color: white;
+  }
+  & > .like_tab > .like:hover {
+    background-color: aliceblue;
+  }
 `;
 
 export const onImageError = e => {
@@ -74,6 +89,7 @@ const HomeComponent = ({
   summary,
   large_cover_image,
   medium_cover_image,
+  isLiked,
 }) => {
   return (
     <HomeComponentBlock id={id} className="jc-center ai-center">
@@ -103,6 +119,15 @@ const HomeComponent = ({
             {!summary && <p className="summary">No Summary ......</p>}
           </div>
         </div>
+      </div>
+      <div className="like_tab flex-center">
+        <button className="like">
+          {isLiked ? (
+            <i class="fas fa-heart" style={{ color: '#ccc' }}></i>
+          ) : (
+            <i class="fas fa-heart" style={{ color: '#dc143c' }}></i>
+          )}
+        </button>
       </div>
       <Link to={`/${id}`} className="movie_title">
         {title}
