@@ -1,6 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { gql, useMutation } from '@apollo/client';
+
+const TOGGLE_MOVIE_LIKE = gql`
+  mutation toggleMovieLike($id: Int!, $isLiked: Boolean!) {
+    toggleMovieLike(id: $id, isLiked: $isLiked) @client
+  }
+`;
 
 const HomeComponentBlock = styled.div`
   padding: 20px 10px;
@@ -26,7 +33,6 @@ const HomeComponentBlock = styled.div`
   & > .movie_title {
     z-index: 2;
     font-size: 1.5rem;
-    text-decoration: none;
     color: #0f202d;
     word-wrap: break-word;
     font-weight: 700;
@@ -55,20 +61,34 @@ const HomeComponentBlock = styled.div`
     width: 169px;
     height: calc(100% - 28.4px);
   }
-  & > .like_tab {
+  & > .util_tab {
     margin: 5px;
     z-index: 10;
+    width: 100%;
+    justify-content: space-between;
   }
 
-  & > .like_tab > .like {
+  & > .util_tab > .like {
     cursor: pointer;
     border: 1px solid #ccc;
     border-radius: 10%;
-    padding: 3px 7px;
+    padding: 5px 15px;
+    font-size: 1.5rem;
     background-color: white;
   }
-  & > .like_tab > .like:hover {
+  & > .util_tab > .like:hover {
     background-color: aliceblue;
+  }
+
+  & > .util_tab > .movie_link {
+    text-decoration: none;
+    background-color: #dc143c;
+    color: #fff;
+    font-size: 1.5rem;
+    border-radius: 7%;
+    width: 100%;
+    text-align: center;
+    padding: 3px 15px;
   }
 `;
 
@@ -91,6 +111,13 @@ const HomeComponent = ({
   medium_cover_image,
   isLiked,
 }) => {
+  const [toggleMovieLike] = useMutation(TOGGLE_MOVIE_LIKE, {
+    variables: {
+      id: +id,
+      isLiked,
+    },
+  });
+
   return (
     <HomeComponentBlock id={id} className="jc-center ai-center">
       <div className="movie_item flex-center">
@@ -120,18 +147,17 @@ const HomeComponent = ({
           </div>
         </div>
       </div>
-      <div className="like_tab flex-center">
-        <button className="like">
-          {isLiked ? (
-            <i class="fas fa-heart" style={{ color: '#ccc' }}></i>
-          ) : (
-            <i class="fas fa-heart" style={{ color: '#dc143c' }}></i>
-          )}
+      <div className="util_tab flex ai-center ">
+        <button className="like" onClick={toggleMovieLike}>
+          <i
+            className="fas fa-heart"
+            style={{ color: isLiked ? '#dc143c' : '#ccc' }}></i>
         </button>
+        <Link to={`/${id}`} className="movie_link">
+          Details
+        </Link>
       </div>
-      <Link to={`/${id}`} className="movie_title">
-        {title}
-      </Link>
+      <strong className="movie_title">{title}</strong>
     </HomeComponentBlock>
   );
 };

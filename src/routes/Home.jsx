@@ -18,11 +18,11 @@ const GET_MOVIES = gql`
 const Home = () => {
   const { loading, error, data } = useQuery(GET_MOVIES);
   console.log(
-    'Home: loading status: ' +
+    'Home:\n\tloading status: ' +
       loading +
-      '\nerror: ' +
+      '\n\terror: ' +
       error +
-      '\ndata: ' +
+      '\n\tdata: ' +
       data,
   );
   return (

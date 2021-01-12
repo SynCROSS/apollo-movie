@@ -5,14 +5,13 @@ import { onImageError } from './HomeComponent';
 const DetailComponentBlock = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: rgba(51, 51, 51, 0.3);
+  background-color: rgba(51, 51, 51, 0.5);
   background-blend-mode: multiply;
   padding: 10px 20px;
   width: 97vw;
 
   & > .movie_info {
     font-size: 2rem;
-    width: 50%;
     margin: 20px;
     word-wrap: break-word;
   }
@@ -33,7 +32,6 @@ const DetailComponentBlock = styled.div`
 
   & > .movie_info > .movie_header > .under_title {
     justify-content: space-between;
-    width: 100%;
   }
 
   & > .movie_info > .movie_header > .genres {
@@ -43,6 +41,11 @@ const DetailComponentBlock = styled.div`
 
   & > .movie_info > .movie_header > .genres > .genre {
     list-style: none;
+  }
+
+  & > .movie_info > .movie_header > .under_title,
+  & > .movie_info > .movie_header > .summary {
+    width: 50%;
   }
 `;
 
@@ -81,9 +84,9 @@ const DetailComponent = ({
             </strong>
             <div className="date">{date_uploaded}</div>
           </div>
-          <hr style={{ margin: '10px 0', width: '100%' }} />
+          <hr style={{ margin: '10px 0', width: '50%' }} />
+          <p className="summary">{description_full}</p>
         </header>
-        <p className="summary">{description_full}</p>
       </div>
     </DetailComponentBlock>
   );
